@@ -9,11 +9,25 @@
 * [V2ray官方说明](https://www.v2ray.com/)，了解 TLS WebSocket 及 V2ray 相关信息
 * 安装好 wget
 
+### Centos 系统准备
+* yum -y update && yum -y install cronie && yum -y install yum-cron && yum -y install wget
+* vi /etc/yum/yum-cron.conf
+   修改 apply_updates = yes
+   systemctl start crond.service && systemctl enable crond.service && systemctl start yum-cron.service && systemctl enable yum-cron.service
+   crontab -e
+   添加 0 5 * * * reboot
+* systemctl start firewalld && systemctl enable firewalld
+
 ### 安装/更新方式（h2 和 ws 版本已合并）
 Vmess+websocket+TLS+Nginx+Website
 ```
 wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.com/wonder2k/V2Ray_ws-tls_bash_onekey/master/install.sh" && chmod +x install.sh && bash install.sh
 ```
+
+### 防火墙开启端口
+* firewall-cmd --zone=public --add-port=80/tcp --permanent
+* firewall-cmd --zone=public --add-port=443/tcp --permanent
+* firewall-cmd --reload
 
 ### 注意事项
 * 如果你不了解脚本中各项设置的具体含义，除域名外，请使用脚本提供的默认值
@@ -69,6 +83,8 @@ wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.c
 启动 Nginx：`systemctl start nginx`
 
 停止 Nginx：`systemctl stop nginx`
+
+升级V2Ray core: `bash <(curl -L -s https://install.direct/go.sh)`
 
 ### 相关目录
 
