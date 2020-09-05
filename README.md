@@ -26,6 +26,7 @@ wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.c
 ```
 
 ### 防火墙开启端口
+* `systemctl start firewalld && systemctl enable firewalld`
 * `firewall-cmd --zone=public --add-port=80/tcp --permanent`
 * `firewall-cmd --zone=public --add-port=443/tcp --permanent`
 * `firewall-cmd --reload`
