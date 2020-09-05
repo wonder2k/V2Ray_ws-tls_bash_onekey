@@ -10,13 +10,13 @@
 * 安装好 wget
 
 ### Centos 系统准备
-* yum -y update && yum -y install cronie && yum -y install yum-cron && yum -y install wget
-* vi /etc/yum/yum-cron.conf
+* `yum -y update && yum -y install cronie && yum -y install yum-cron && yum -y install wget`
+* `vi /etc/yum/yum-cron.conf`
    修改 apply_updates = yes
-   systemctl start crond.service && systemctl enable crond.service && systemctl start yum-cron.service && systemctl enable yum-cron.service
-   crontab -e
+   `systemctl start crond.service && systemctl enable crond.service && systemctl start yum-cron.service && systemctl enable yum-cron.service`
+   `crontab -e`
    添加 0 5 * * * reboot
-* systemctl start firewalld && systemctl enable firewalld
+* `systemctl start firewalld && systemctl enable firewalld`
 
 ### 安装/更新方式（h2 和 ws 版本已合并）
 Vmess+websocket+TLS+Nginx+Website
@@ -25,9 +25,9 @@ wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.c
 ```
 
 ### 防火墙开启端口
-* firewall-cmd --zone=public --add-port=80/tcp --permanent
-* firewall-cmd --zone=public --add-port=443/tcp --permanent
-* firewall-cmd --reload
+* `firewall-cmd --zone=public --add-port=80/tcp --permanent`
+* `firewall-cmd --zone=public --add-port=443/tcp --permanent`
+* `firewall-cmd --reload`
 
 ### 注意事项
 * 如果你不了解脚本中各项设置的具体含义，除域名外，请使用脚本提供的默认值
