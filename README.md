@@ -10,6 +10,9 @@
 * 安装好 wget
 
 ### Centos 系统准备
+* `cp /usr/lib/firewalld/services/ssh.xml /etc/firewalld/services/`
+* `vi /etc/firewalld/services/ssh.xml`   修改对应SSH端口<port protocol="tcp" port="7777"/>
+* `firewall-cmd --permanent --add-service=ssh && firewall-cmd --reload`
 * `yum -y update && yum -y install cronie && yum -y install yum-cron && yum -y install wget`
 * `vi /etc/yum/yum-cron.conf`   修改 apply_updates = yes
 * `systemctl start crond.service && systemctl enable crond.service && systemctl start yum-cron.service && systemctl enable yum-cron.service`
