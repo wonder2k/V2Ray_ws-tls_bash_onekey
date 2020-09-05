@@ -11,11 +11,9 @@
 
 ### Centos 系统准备
 * `yum -y update && yum -y install cronie && yum -y install yum-cron && yum -y install wget`
-* `vi /etc/yum/yum-cron.conf`
-   修改 apply_updates = yes
-   `systemctl start crond.service && systemctl enable crond.service && systemctl start yum-cron.service && systemctl enable yum-cron.service`
-   `crontab -e`
-   添加 0 5 * * * reboot
+* `vi /etc/yum/yum-cron.conf`   修改 apply_updates = yes
+* `systemctl start crond.service && systemctl enable crond.service && systemctl start yum-cron.service && systemctl enable yum-cron.service`
+* `crontab -e`   添加 0 5 * * * reboot
 * `systemctl start firewalld && systemctl enable firewalld`
 
 ### 安装/更新方式（h2 和 ws 版本已合并）
