@@ -27,9 +27,7 @@ wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.c
 
 ### 防火墙开启端口
 * `systemctl start firewalld && systemctl enable firewalld`
-* `firewall-cmd --zone=public --add-port=80/tcp --permanent`
-* `firewall-cmd --zone=public --add-port=443/tcp --permanent`
-* `firewall-cmd --reload`
+* `firewall-cmd --zone=public --add-port=80/tcp --permanent && firewall-cmd --zone=public --add-port=443/tcp --permanent && firewall-cmd --reload`
 
 ### 注意事项
 * 如果你不了解脚本中各项设置的具体含义，除域名外，请使用脚本提供的默认值
